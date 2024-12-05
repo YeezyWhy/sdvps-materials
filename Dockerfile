@@ -4,7 +4,7 @@ FROM golang:1.16 AS builder
 WORKDIR $GOPATH/src/github.com/netology-code/sdvps-materials
 COPY . ./
 RUN apt-get update && apt-get install -y sudo && apt-get install -y golang-go
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .
 
 FROM alpine:latest
 RUN apk -U add ca-certificates
