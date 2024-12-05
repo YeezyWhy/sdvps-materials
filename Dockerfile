@@ -4,6 +4,7 @@ FROM golang:1.16 AS builder
 WORKDIR $GOPATH/src/github.com/netology-code/sdvps-materials
 ADD ./* ./
 RUN apt-get update && apt-get install -y sudo && apt-get install -y golang-go
+RUN echo $(ls -al)
 RUN go env -w GO111MODULE=off && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .
 
 FROM alpine:latest
