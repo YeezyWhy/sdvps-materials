@@ -1,7 +1,7 @@
 FROM golang:1.16 AS builder
 
 # Copy the code from the host and compile it
-WORKDIR $GOPATH/src/github.com/netology-code/sdvps-materials
+WORKDIR "$GOPATH/src/github.com/netology-code/sdvps-materials"
 ADD ./* ./
 RUN apt-get update && apt-get install -y sudo && apt-get install -y golang-go
 RUN echo $(ls -al)
